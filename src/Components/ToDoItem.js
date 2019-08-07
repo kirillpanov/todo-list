@@ -5,6 +5,7 @@ export class ToDoItem {
         this.id = todoItem.id;
         this.todo = todoItem.todo;
         this.listContainerRef = listContainerRef;
+        this.fulfilled = todoItem.fulfilled;
         this.init();
     }
 
@@ -12,9 +13,14 @@ export class ToDoItem {
         const item = document.createElement("li");
         const checkBox = document.createElement("input");
         checkBox.setAttribute("type", "checkbox");
-        if (this.fullfilled) {
-            checkBox.setAttribute("checked");
+
+        if (this.fulfilled) {
+            checkBox.setAttribute("checked", true);
+            item.classList.add("fulfilled");
+        } else {
+            item.classList.remove("fulfilled");
         }
+
         const itemText = document.createElement("span");
         itemText.textContent = this.todo;
         item.classList.add("todo-item");

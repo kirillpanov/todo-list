@@ -1,24 +1,47 @@
 .add-todo-form {
-    display: grid;
-    width: 50%;
-    grid-template-columns: auto 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 20px;
-    margin: 0 auto;
-    position: relative;
+  display: grid;
+  width: 50%;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+label {
+  text-transform: uppercase;
 }
 
 .submit-button {
-    grid-column-start: 2;
+  grid-column-start: 2;
+  background: #00bff0;
+  border: 2px solid #00bff0;
+  padding: 5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit-button:disabled,
+.submit-button:disabled:hover {
+  background: #9e9e9e;
+  border-color: #9e9e9e;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.submit-button:hover {
+  background: #ffffff;
+  color: #00bff0;
 }
 
 .validation-message {
-    position: absolute;
-    visibility: hidden;
-    color: #ff0000;
-    font-size: 10px;
+  position: absolute;
+  visibility: hidden;
+  color: #ff0000;
+  font-size: 10px;
 }
 
 .visible {
-    visibility: visible;
+  visibility: visible;
 }
