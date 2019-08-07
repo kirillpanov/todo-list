@@ -1,28 +1,28 @@
 const webpack = require("webpack");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const config = {
-    entry: ["@babel/polyfill", "./src/js/index.js"],
+    entry: ["./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        chunkFilename: "./chunks/[name].js",
-        publicPath: "dist"
+        filename: "bundle.js"
     },
+    devServer: {
+        contentBase: "./dist",
+        hot: true
+    },
+    plugins: [
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: "Todo List App"
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ],
     module: {
         rules: [
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: {
-                            presets: ["@babel/preset-env"]
-                        }
-                    }
-                ]
-            },
             {
                 test: /\.css$/,
                 use: [{ loader: "style-loader" }, { loader: "css-loader" }]
